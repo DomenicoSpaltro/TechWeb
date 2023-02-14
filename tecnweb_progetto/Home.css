@@ -1,0 +1,172 @@
+
+body {font-family: 'Inter', sans-serif;font-size: 16px;}
+.font1 {font-family: 'Playfair Display', serif;}
+.font2 {font-family: 'EB Garamond', serif;}
+a {text-decoration: none;}
+h1, h2, h3, h4, p{color: black; padding-bottom: 30px;}
+
+.big-text {font-size: 70px;font-weight: 800;}
+.med-text {font-size: 25px;}
+.normal-text {font-size: 18px;}
+.small-text {font-size: 10px;}
+.intro-text {text-transform: uppercase; font-size: 15px; font-weight: bold;}
+.button {padding: 18px 20px; background: black; color: white; display: inline-block; border: 4px;}
+.mt-1 {margin-top: 40px;}
+.mt-2 {margin-top: 90px;}
+
+.text{color: white;}
+.text2{color: black;}
+.text3{color: lightgray;}
+
+
+@media (max-width: 1125px) {
+    .mt-1 {margin-top: 40px;}
+    .mt-2 {margin-top: 90px;}
+}
+
+
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background: black;
+    height: 100px;
+}
+
+.header__content { margin: 0 auto; display: flex; justify-content: space-between;}
+
+.logo {
+    padding: 15px;
+    z-index: 1;
+}
+
+.menu {
+    transition: all 1s cubic-bezier(.215, .61, .355, 1);
+    width: 55%;
+    z-index: 0;
+}
+
+.menu li {display: inline-block;}
+.menu li a{color: white; display: block; padding: 25px; font-size: 18px;}
+
+
+
+@media (max-width: 1125px) {
+    .menu {position: absolute; top: 0; right: -100%; background: black; height: 100vh; padding-top: 80px; width: 100%;}
+    .menu li {border-bottom: 2px solid gainsboro; display: block;}
+    .menu li a {font-size: 19px;}
+    .icona {display: block; height: 50px; width: 50px; position: absolute; top: 30px; right: 20px;}
+    .icona span {height: 5px; width: 40px;background: white; display: block; margin-bottom: 6px;}
+    .menu--open {right: 0;}
+}
+
+.hero {
+    position: relative;
+    background: black;
+    height: 99vh;
+    display: flex; width: 100%; align-items: center;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.hero:after{
+    content:' ';
+    width: 100%;
+    height: 200%;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    opacity: 0.4;
+}
+
+.hero_content {
+    height: 40%;
+    width: 200%;
+    max-width: 1380px;
+    margin: 0 auto;
+    z-index: 1;
+    position: relative;
+    letter-spacing: 2px;
+    white-space: 3px;
+}
+
+.hero_content h1,
+.hero_content p{color: white}
+
+#video {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+}
+
+.poster {display: flex; height: 100vh; width: 100%; align-items: center;}
+.poster_img {width: 70%; height: 100%}
+.poster_img img{object-fit: cover; width: 100%; height: 100%}
+.poster_content {width: 45%;padding: 20px;white-space: 3px;}
+
+.poster_content p{color: dimgray;}
+
+@media (max-width: 1125px) {
+    .poster {flex-wrap: wrap;height: auto;}
+    .poster_img,
+    .poster_content {width: 100%;}
+    .hero {padding: 50px; }
+}
+
+.cover {
+    display: flex;
+    padding: 100px 0;
+    background:  linear-gradient(0deg, rgba(0,0,0,.4), rgba(0,0,0,0.6)), url('images/foto2.png') no-repeat center center;
+    background-size: cover;
+}
+.cover_testo h4 {line-height: 1px;}
+.cover_testo {width: 40%; padding: 40px;}
+.cover_titolo {width: 45%; padding: 50px; display: flex; align-items: center; letter-spacing: 2px; white-space: 3px;}
+
+@media (max-width: 1125px) {
+    .cover {flex-wrap: wrap;}
+    .cover_testo,
+    .cover_titolo {width: 100%;}
+}
+
+.footer {background: gainsboro; height: 220px;}
+
+.grid {
+    height: 220px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 200px;
+    text-align: center;
+}
+.col {line-height: 3px;}
+
+.social {
+    background: gainsboro;
+    font-size: 25px;
+    padding-left: 10px;
+    padding-bottom: 40px;
+    gap: 45px;
+    display: flex;
+}
+
+@media (max-width: 1125px) {
+    .social,
+    .grid { display:table-cell; background: gainsboro;
+        width: 1125px;}
+}
+
+*,
+*:before,
+:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Progetto Tecnologie Web</title>
+    <link rel="stylesheet" href="assistenza.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src=" https://kit.fontawesome.com/e5babcdecf.js" crossorigin="anonymous"></script>
+    <script src=" https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+   
+    <header class="header">
+        <div class="header__content">
+            <div class="logo">
+                <img src="images/logo.png" alt="" width="120">
+            </div>
+            <ul class="menu">
+                <li> <a href="home.html"> <strong> Home </strong> </a> </li>
+                <li> <a href="Locali.html"> <strong> Locali </strong> </a> </li>
+                <li> <a href=""> <strong> Assistenza </strong> </a> </li>
+                <li> <a href=""> <strong>  Account </strong> </a> </li>
+            </ul>
+            <div class="icona">
+                <span> </span>
+                <span> </span>
+                <span> </span>
+            </div>
+        </div>
+    </header>
+
+
+
+
+<section >
+    <div class="container ">
+      <form action="https://formspree.io/mbjzbwaj" method="POST" id="my-form">
+  
+        <div class="form-group">
+          <label for="firstName"> First Name</label>
+          <input type="text" id="firstName" name="firstName">
+        </div>
+  
+        <div class="form-group">
+          <label for="latsName">Last Name</label>
+          <input type="text" id="lastName" name="lastName">
+        </div>
+  
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+        </div>
+  
+        <div class="form-group">
+          <label for="massage">Massage</label>
+          <textarea name="massage" id="massage" cols="30" rows="10"></textarea>
+        </div>
+  
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    <div id="status"></div>
+  </section>
+
+
+
+<p class="tx med-text font2"> CLICCA <br> QUI <br>
+    <i class="fa-sharp fa-solid fa-arrow-down"> </i> </p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- CHAT BAR BLOCK -->
+    <div class="chat-bar-collapsible">
+        <button id="chat-button" type="button" class="collapsible">Chat with us!
+            <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+        </button>
+
+        <div class="content">
+            <div class="full-chat-block">
+                <!-- Message Container -->
+                <div class="outer-container">
+                    <div class="chat-container">
+                        <!-- Messages -->
+                        <div id="chatbox">
+                            <h5 id="chat-timestamp"></h5>
+                            <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                        </div>
+
+                        <!-- User input box -->
+                        <div class="chat-bar-input-block">
+                            <div id="userInput">
+                                <input id="textInput" class="input-box" type="text" name="msg"
+                                    placeholder="Tap 'Enter' to send a message">
+                                <p></p>
+                            </div>
+
+                            <div class="chat-bar-icons">
+                                <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                    onclick="heartButton()"></i>
+                                <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                                    onclick="sendButton()"></i>
+                            </div>
+                        </div>
+
+                        <div id="chat-bar-bottom">
+                            <p></p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+<p  class="tx2 font2 med-text"> Qui troverai <br> <br> tutto  l'aiuto <br> <br>che ti serve! </p>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"> </script>
+    <script> 
+
+// Collapsible
+var coll = document.getElementsByClassName("collapsible");
+
+for (let i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+
+        var content = this.nextElementSibling;
+
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+        }
+
+    });
+} 
+
+function getTime() {
+    let today = new Date();
+    hours = today.getHours();
+    minutes = today.getMinutes();
+
+    if (hours < 10) {
+        hours = "0" + hours;
+    }
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+
+    let time = hours + ":" + minutes;
+    return time;
+}
+
+// Gets the first message
+function firstBotMessage() {
+    let firstMessage = "Ciao, se hai sbagliato prenotazione scrivi 'Ho sbagliato prenotazione'. Se ti serve aiuto scrivi 'Come contattare l'assistenza?'. Se invece vuoi annullare la tua iscrizione scrivi 'Come annullo l'iscrizione?'. "
+    document.getElementById("botStarterMessage").innerHTML = '<p class="botText"><span>' + firstMessage + '</span></p>';
+
+    let time = getTime();
+
+    $("#chat-timestamp").append(time);
+    document.getElementById("userInput").scrollIntoView(false);
+}
+
+firstBotMessage();
+
+// Retrieves the response
+function getHardResponse(userText) {
+    let botResponse = getBotResponse(userText);
+    let botHtml = '<p class="botText"><span>' + botResponse + '</span></p>';
+    $("#chatbox").append(botHtml);
+
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
+}
+
+//Gets the text text from the input box and processes it
+function getResponse() {
+    let userText = $("#textInput").val();
+
+    if (userText == "") {
+        userText = "ciao";
+    }
+
+    let userHtml = '<p class="userText"><span>' + userText + '</span></p>';
+
+    $("#textInput").val("");
+    $("#chatbox").append(userHtml);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+    setTimeout(() => {
+        getHardResponse(userText);
+    }, 1000)
+
+}
+
+// Handles sending text via button clicks
+function buttonSendText(sampleText) {
+    let userHtml = '<p class="userText"><span>' + sampleText + '</span></p>';
+
+    $("#textInput").val("");
+    $("#chatbox").append(userHtml);
+    document.getElementById("chat-bar-bottom").scrollIntoView(true);
+
+    //Uncomment this if you want the bot to respond to this buttonSendText event
+    // setTimeout(() => {
+    //     getHardResponse(sampleText);
+    // }, 1000)
+}
+
+function sendButton() {
+    getResponse();
+}
+
+function heartButton() {
+    buttonSendText("Grazie per il servizio! <3")
+}
+
+// Press enter to send a message
+$("#textInput").keypress(function (e) {
+    if (e.which == 13) {
+        getResponse();
+    }
+});
+
+
+function getBotResponse(input) {
+    //rock paper scissors
+    if (input == "Come contattare l'assistenza?") {
+        return "email: theroom@gmail.com o se preferisci telefono: 3510631709";
+    } else if (input == "Ho sbagliato prenotazione") {
+        return "Sulla nostra pagina 'locali' dove hai effettuato la prenotazione troverai il numero e l'email di ogni locale, se la prenotazione non è giusta o intendi cambiarla chiamali o scrivigli. Se dovessi avere altri problemi al riguardo contatta il nostro sito per parlare direttamente con un operatore email: theroom@gmail.com o se preferisci telefono: 3510631709. Ci scusiamo per il disagio.";
+    } else if (input == "Come annullo l'iscrizione?") {
+        return "In caso hai prenotato un locale puoi annullare la tua iscrizione sul nostro sito solo il giorno dopo della prenotazione della tua festa. Tra l'altro ricorda che se sei iscritto ogni mese verrano retratti i 3,99 dell'abbonamento anche se non hai usufruito dei nostri servizi. Per altre info o per annullare l'iscrizione contatta la nostra assistenza tramite email: theroom@gmail.com o se preferisci telefono: 3510631709.";
+    }
+
+    // Simple responses
+    if (input == "ciao") {
+        return "ciao come posso aiutarti?";
+    } else if (input == "arrivederci") {
+        return "Ci sentiamo!";
+    } else {
+        return "Prova a chiedere qualcos'altro!";
+    }
+}
+
+
+
+
+
+
+
+window.addEventListener("DOMContentLoaded", function () {
+  // get the form elements defined in your form HTML above
+
+  var form = document.getElementById("my-form");
+  // var button = document.getElementById("my-form-button");
+  var status = document.getElementById("status");
+
+  // Success and Error functions for after the form is submitted
+
+  function success() {
+    form.reset();
+    status.classList.add("success");
+    status.innerHTML = "Thanks!";
+  }
+
+  function error() {
+    status.classList.add("error");
+    status.innerHTML = "Oops! There was a problem.";
+  }
+
+  // handle the form submission event
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var data = new FormData(form);
+    ajax(form.method, form.action, data, success, error);
+  });
+});
+
+// helper function for sending an AJAX request
+
+function ajax(method, url, data, success, error) {
+  var xhr = new XMLHttpRequest();
+  xhr.open(method, url);
+  xhr.setRequestHeader("Accept", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState !== XMLHttpRequest.DONE) return;
+    if (xhr.status === 200) {
+      success(xhr.response, xhr.responseType);
+    } else {
+      error(xhr.status, xhr.response, xhr.responseType);
+    }
+  };
+  xhr.send(data);
+}
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
